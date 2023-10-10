@@ -2,10 +2,17 @@ package com.example.kotlin.examentc2007b.framework.views.activities
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kotlin.examentc2007b.data.MovieRepository
 import com.example.kotlin.examentc2007b.data.network.model.MovieBase
+import com.example.kotlin.examentc2007b.data.network.model.MovieObject
 import com.example.kotlin.examentc2007b.databinding.ActivityMainBinding
 import com.example.kotlin.examentc2007b.framework.adapters.MovieAdapter
+import com.example.kotlin.examentc2007b.utils.Constants
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity: Activity() {
 
@@ -18,6 +25,7 @@ class MainActivity: Activity() {
 
         initializeBinding()
         setUpRecyclerView(testData())
+        getMovieList()
     }
 
     private fun initializeBinding() {
@@ -39,11 +47,22 @@ class MainActivity: Activity() {
     private fun testData():ArrayList<MovieBase>{
         var result = ArrayList<MovieBase>()
 
-        result.add(MovieBase("PELI 1",""))
-        result.add(MovieBase("PELI 2",""))
-        result.add(MovieBase("PELI 3",""))
+        result.add(MovieBase("PELI 1","", "Desc 1"))
+        result.add(MovieBase("PELI 2","", "Desc 2"))
+        result.add(MovieBase("PELI 3","", "Desc 3"))
 
         return result
+    }
+
+    private fun getMovieList(){
+        CoroutineScope(Dispatchers.IO).launch {
+            val movieRepository = MovieRepository()
+            val result: List<MovieBase>? = movieRepository.getMovieList(Constants.API_KEY)
+            Log.d("Salida", result.toString()?:"")
+            CoroutineScope(Dispatchers.Main).launch {
+                setUpRecyclerView(result?.toCollection(ArrayList())?:ArrayList())
+            }
+        }
     }
 
 }
