@@ -1,4 +1,4 @@
-package com.example.kotlin.mypokedexapp.framework.views.activities
+package com.example.kotlin.examentc2007b.framework.views.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
