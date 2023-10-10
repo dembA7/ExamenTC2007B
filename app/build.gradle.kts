@@ -33,6 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -61,7 +64,7 @@ dependencies {
     //Activity
     implementation("androidx.activity:activity-ktx:1.5.0")
     //Databinding
-    implementation("androidx.databinding:databinding-runtime:7.1.2")
+    implementation ("androidx.databinding:databinding-runtime:7.1.2")
 
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")

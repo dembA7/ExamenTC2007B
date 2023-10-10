@@ -1,4 +1,7 @@
 package com.example.kotlin.examentc2007b.utils
 
-class Constants {
+object Constants {
+    const val BASE_URL = "https://api.themoviedb.org/3/"
+    const val MAX_MOVIES_NUMBER = 100
+    const val API_KEY = "b9be2700fb5f71275ab111aa356e75a9"
 }
