@@ -1,4 +1,4 @@
-package com.example.kotlin.examentc2007b.data.network.model.movie
+package com.example.kotlin.examentc2007b.domain.model.movie
 
 data class Movie(
     val page: Int,

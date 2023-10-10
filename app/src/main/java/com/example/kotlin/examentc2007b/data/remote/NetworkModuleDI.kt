@@ -1,4 +1,5 @@
-import com.example.kotlin.examentc2007b.data.network.MovieAPIService
+package com.example.kotlin.examentc2007b.data.remote
+
 import com.example.kotlin.examentc2007b.utils.Constants
 import okhttp3.OkHttpClient
 import okhttp3.Request
