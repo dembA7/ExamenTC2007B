@@ -1,4 +1,5 @@
 package com.example.kotlin.examentc2007b.utils
 
-class Constants {
+object Constants {
+    const val BASE_URL = "https://api.themoviedb.org/3/movie/popular"
 }
