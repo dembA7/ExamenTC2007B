@@ -1,9 +1,8 @@
-package com.example.kotlin.examentc2007b.data
+package com.example.kotlin.examentc2007b.data.repository
 
-import com.example.kotlin.examentc2007b.data.network.MovieAPIClient
-import com.example.kotlin.examentc2007b.data.network.model.MovieBase
-import com.example.kotlin.examentc2007b.data.network.model.MovieObject
-import retrofit2.Response
+import com.example.kotlin.examentc2007b.data.remote.MovieAPIClient
+import com.example.kotlin.examentc2007b.domain.model.MovieBase
+import com.example.kotlin.examentc2007b.domain.model.MovieObject
 
 
 class MovieRepository {

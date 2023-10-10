@@ -4,9 +4,8 @@ import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kotlin.examentc2007b.data.MovieRepository
-import com.example.kotlin.examentc2007b.data.network.model.MovieBase
-import com.example.kotlin.examentc2007b.data.network.model.MovieObject
+import com.example.kotlin.examentc2007b.data.repository.MovieRepository
+import com.example.kotlin.examentc2007b.domain.model.MovieBase
 import com.example.kotlin.examentc2007b.databinding.ActivityMainBinding
 import com.example.kotlin.examentc2007b.framework.adapters.MovieAdapter
 import com.example.kotlin.examentc2007b.utils.Constants
@@ -17,7 +16,7 @@ import kotlinx.coroutines.launch
 class MainActivity: Activity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter : MovieAdapter = MovieAdapter()
+    private val adapter : MovieAdapter = MovieAdapter(this)
     private lateinit var data:ArrayList<MovieBase>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,16 +39,16 @@ class MainActivity: Activity() {
             LinearLayoutManager.VERTICAL,
             false)
         binding.RVMovie.layoutManager = linearLayoutManager
-        adapter.CommonsAdapter(dataForList)
+        adapter.CommonsAdapter(dataForList, this)
         binding.RVMovie.adapter = adapter
     }
 
     private fun testData():ArrayList<MovieBase>{
         var result = ArrayList<MovieBase>()
 
-        result.add(MovieBase("PELI 1","", "Desc 1"))
-        result.add(MovieBase("PELI 2","", "Desc 2"))
-        result.add(MovieBase("PELI 3","", "Desc 3"))
+        result.add(MovieBase(968051,"", "", ""))
+        result.add(MovieBase(926393,"", "", ""))
+        result.add(MovieBase(678512,"", "", ""))
 
         return result
     }
