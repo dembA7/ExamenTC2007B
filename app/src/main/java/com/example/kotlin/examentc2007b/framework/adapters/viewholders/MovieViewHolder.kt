@@ -12,6 +12,7 @@ import com.example.kotlin.examentc2007b.utils.Constants
 class MovieViewHolder(private val binding: ItemMovieBinding): RecyclerView.ViewHolder(binding.root) {
     fun bind(item: MovieBase, context: Context){
         binding.TVName.text = item.title
+        binding.TVDescription.text = truncateOverview(item.overview)
         setImage(item, context, binding.IVPhoto, binding.root.context)
     }
 
@@ -22,6 +23,16 @@ class MovieViewHolder(private val binding: ItemMovieBinding): RecyclerView.ViewH
         Glide.with(context1)
             .load(urlImage)
             .centerCrop()
+            .fitCenter()
             .into(imageView)
+    }
+
+    private fun truncateOverview(overview: String): String {
+        val maxLength = 120
+        return if (overview.length > maxLength) {
+            overview.substring(0, maxLength) + "..."
+        } else {
+            overview
+        }
     }
 }

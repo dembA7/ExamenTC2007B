@@ -9,7 +9,7 @@ class MovieRepository {
     private val apiMovie = MovieAPIClient()
 
     suspend fun getMovieList(apiKey: String): List<MovieBase>? {
-        val response: MovieObject? = apiMovie.getMovieList(100)
+        val response: MovieObject? = apiMovie.getMovieList()
         return if (response != null) {
             response.results
         } else {

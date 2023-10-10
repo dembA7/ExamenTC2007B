@@ -3,6 +3,7 @@ package com.example.kotlin.examentc2007b.framework.views.activities
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin.examentc2007b.data.repository.MovieRepository
 import com.example.kotlin.examentc2007b.domain.model.MovieBase
@@ -23,7 +24,6 @@ class MainActivity: Activity() {
         super.onCreate(savedInstanceState)
 
         initializeBinding()
-        setUpRecyclerView(testData())
         getMovieList()
     }
 
@@ -34,24 +34,14 @@ class MainActivity: Activity() {
 
     private fun setUpRecyclerView(dataForList:ArrayList<MovieBase>){
         binding.RVMovie.setHasFixedSize(true)
-        val linearLayoutManager = LinearLayoutManager(
-            this,
-            LinearLayoutManager.VERTICAL,
-            false)
-        binding.RVMovie.layoutManager = linearLayoutManager
+        val linearLayoutManager = LinearLayoutManager(this)
+        val gridLayoutManager = GridLayoutManager(this, 2)
+        binding.RVMovie.layoutManager = gridLayoutManager
+
         adapter.CommonsAdapter(dataForList, this)
         binding.RVMovie.adapter = adapter
     }
 
-    private fun testData():ArrayList<MovieBase>{
-        var result = ArrayList<MovieBase>()
-
-        result.add(MovieBase(968051,"", "", ""))
-        result.add(MovieBase(926393,"", "", ""))
-        result.add(MovieBase(678512,"", "", ""))
-
-        return result
-    }
 
     private fun getMovieList(){
         CoroutineScope(Dispatchers.IO).launch {
