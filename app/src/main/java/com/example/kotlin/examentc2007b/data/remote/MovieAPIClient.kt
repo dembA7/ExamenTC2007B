@@ -6,7 +6,7 @@ import com.example.kotlin.examentc2007b.domain.model.MovieObject
 class MovieAPIClient {
     private lateinit var api: MovieAPIService
 
-    suspend fun getMovieList(limit: Int): MovieObject?{
+    suspend fun getMovieList(): MovieObject?{
         api = NetworkModuleDI()
         return try{
             api.getMovieList(apiKey = "b9be2700fb5f71275ab111aa356e75a9")
